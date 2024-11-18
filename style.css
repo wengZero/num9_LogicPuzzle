@@ -1,0 +1,83 @@
+:root {
+  --bg-main:#f0f2f5;
+  --bg-color:#fff;
+  --txt-color: #282848;
+  --fill-color: #000;
+  --fill-bg: #caf0f0;
+  --shadow: rgba(0, 0, 0, 0.2);
+
+  --white: #fff;
+  --blue: #00aeef;
+  --red: #e91e63;
+  --black: #000;
+
+  --font-size-s: 1rem;
+  --font-size: 1.5rem;
+  --font-size-l: 2rem;
+  --font-size-xl: 3rem;
+
+  --topNav-size: 40px;
+}
+.dark {
+  --bg-main: #2a2a38;
+  --bg-color: #1a1a2e;
+  --txt-color: #6a6a6a;
+  --fill-color: #fff;
+  --fill-bg: #000;
+  --shadow: rgba(255, 255, 255, 0.1);
+}
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "LXGW WenKai TC", cursive;
+  background-color: var(--bg-color);
+  user-select: none;
+}
+
+nav {
+  background-color: var(--bg-color);
+  color: var(--txt-color);
+  position: fixed;
+  
+  top: 0;
+  width: 100%;
+  box-sizing: 5px 2px var(--bg-main);
+  z-index: 99;
+}
+
+#top-nav #nav-container {
+  max-width: 512px;
+  height: var(--topNav-size);
+  margin: auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  #logo {
+    text-decoration: none;
+    color: var(--blue);
+    font-size: var(--font-size-l);
+  }
+
+  #theme-toggle {
+    color: var(--blue);
+    cursor: pointer;
+    
+    .bx {font-size: var(--font-size-l);}
+    span[light] {  
+      .bxs-sun  {display: none;}
+      .bxs-moon {display: inline-block;}
+    }
+    span[dark] {
+      .bxs-sun {display: inline-block;}
+      .bxs-moon {display: none;}
+    }
+  }
+}
