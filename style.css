@@ -2,7 +2,7 @@
   --bg-main:#f0f2f5;
   --bg-color:#fff;
   --txt-color: #282848;
-  --fill-color: #fff;
+  --fill-text: #000;
   --fill-bg: #caf0f0;
   --shadow: rgba(0, 0, 0, 0.2);
 
@@ -10,6 +10,7 @@
   --blue: #00aeef;
   --red: #e91e63;
   --black: #000;
+  --green: #36d43b;
 
   --font-size-s: 1rem;
   --font-size: 1.5rem;
@@ -22,7 +23,7 @@
   --bg-main: #2a2a38;
   --bg-color: #1a1a2e;
   --txt-color: #6a6a6a;
-  --fill-bg: #000;
+  --fill-text: #fff;
   --shadow: rgba(255, 255, 255, 0.1);
 }
 

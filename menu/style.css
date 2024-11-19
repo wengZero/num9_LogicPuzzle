@@ -11,7 +11,7 @@
 
 #screen {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   min-width: 480px;
   height: 100%;
 }

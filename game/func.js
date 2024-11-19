@@ -1,8 +1,45 @@
+function ans_wrong_effect() {
+  frame.board.cells.forEach(element => {
+    element.classList.add('error-shake');
+  });
+  setTimeout(()=> {
+    frame.board.cells.forEach(element => {
+      element.classList.remove('error-shake');
+    });
+  }, 500);
+}
+function ans_success_effect() {
+  frame.finish = 1;
+  setTimeout(()=> {
+    frame.board.cells[0].classList.add('success');
+  }, 200);
+  setTimeout(()=> {
+    frame.board.cells[1].classList.add('success');
+    frame.board.cells[3].classList.add('success');
+  }, 400);
+  setTimeout(()=> {
+    frame.board.cells[2].classList.add('success');
+    frame.board.cells[4].classList.add('success');
+    frame.board.cells[6].classList.add('success');
+  }, 600);
+  setTimeout(()=> {
+    frame.board.cells[5].classList.add('success');
+    frame.board.cells[7].classList.add('success');
+  }, 800);
+  setTimeout(()=> {
+    frame.board.cells[8].classList.add('success');
+  }, 1000);
+}
+
+
+
+
 function add_clickEvent_Init() {
   
   //gameBoard: click -> [ focus <> release]
   frame.board.cells.forEach(element => {
     element.addEventListener('click', () => {
+      if (frame.finish) return;
       if (frame.board.active != null) {
         frame.board.active.removeAttribute('focus');
       }
@@ -13,7 +50,7 @@ function add_clickEvent_Init() {
         frame.board.active = element;
         element.setAttribute('focus', "");
       }
-    })
+    });
   });
 
   //home: click -> goBack to Mune
@@ -23,17 +60,16 @@ function add_clickEvent_Init() {
     if (frame.board.active != null) {
       frame.board.active.removeAttribute('focus');
       frame.board.active = null;
-
-      frame.condition.value = 1;
-
     }
     frame.board.cells.forEach(element => {
+      element.classList.remove('success');
       element.innerHTML = "";
     });
   });
 
   //reset: click -> clear all number in all cells (all)
   document.querySelector('button.oper#reset').addEventListener('click', () => {
+    if (frame.finish) return;
     frame.board.cells.forEach(element => {
       element.innerHTML = "";
     });
@@ -43,6 +79,7 @@ function add_clickEvent_Init() {
 
   //clear: click -> clear all number in 'focus' cell (only one)
   document.querySelector('button.oper#clear').addEventListener('click', () => {
+    if (frame.finish) return;
     if (frame.board.active === null) return;
     frame.board.active.innerHTML = "";
   });
@@ -54,19 +91,23 @@ function add_clickEvent_Init() {
 
   //finish: click -> check gameBoard is correct
   document.querySelector('button.oper#finish').addEventListener('click', () => {
+    if (frame.finish) return;
     let check = "";
-    console.log(frame.board.cells);
-    console.log(frame.board.cells[0].childNodes);
+    if (frame.board.active !== null) {
+      frame.board.active.removeAttribute('focus');
+      frame.board.active = null;
+    }
     frame.board.cells.forEach(element => {
       if (element.childNodes.length != 1) return;
       check += element.childNodes[0].innerHTML;
     });
-    console.log(check);
+
+
     if (check == frame.ans) {
-      alert('success');
+      ans_success_effect();
     }
     else {
-      alert('error');
+      ans_wrong_effect();
     }
   });
 
@@ -153,12 +194,12 @@ function gameBoard_init() {
 
 
 function conditionCard_generator() {
-  fetch('./game/level/config_'+(frame.level)+'.json').then(res => res.json())
-  .then(data => {
-    frame.cond.innerHTML = 
+  frame.cond.innerHTML = 
       "<li class='cond' keep><div id='cond-text'>Keep</div><div id='cond-board'>\
       <span id='1' none></span><span id='2' none></span><span id='3' none></span><span id='4' none></span><span id='5' none>\
       </span><span id='8' none></span><span id='9' none></span></div></li>";
+  fetch('./game/level/config_'+(frame.level)+'.json').then(res => res.json())
+  .then(data => {
     frame.ans = data["A"];
     
     frame.condition.last = 1;
@@ -181,16 +222,8 @@ function conditionCard_generator() {
         let span = document.createElement("span");
         span.id = j.toString();
         
-        switch (data[i].board[j-1]) {
-          case 1:
-            span.innerHTML = "<i class='fa-solid fa-star'></i>";
-            break;
-          case 2:
-            span.innerHTML = "<i class='fa-solid fa-xmark'></i>";
-            break;
-          default:
-            break;
-        }
+        boardIndex(span, data[i].board[j-1]);
+
         div_2.appendChild(span);
       }
       li.appendChild(div_1);
@@ -198,5 +231,24 @@ function conditionCard_generator() {
 
       frame.cond.appendChild(li);
     }
-  });
+  })
+  .catch(err => alert('關卡尚未完成'));
+}
+
+const map = {"star":1, "x-mark":2, "none": 3};
+function boardIndex(span, code) {
+  if (code == map["star"]) {
+    span.innerHTML = "<i class='fa-solid fa-star'></i>";
+    return;
+  }
+
+  if (code == map["x-mark"]) {
+    span.innerHTML = "<i class='fa-solid fa-xmark'></i>";
+    return;
+  }
+
+  if (code == map["none"]) {
+    span.setAttribute('none', '');
+    return;
+  }
 }
