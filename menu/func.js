@@ -12,7 +12,12 @@ function tile_add_clickEvent(tile) {
 
 
 function gameMenu_init() {
-  for (let i=0; i<100; i++) {
+  fetch('./game/level/config_0.json').then(res => res.json())
+  .then(data => {
+    frame.levelMax = data['level']
+  });
+
+  for (let i=0; i<frame.levelMax; i++) {
     let tile = document.createElement("div");
     tile.id = (i+1).toString();
     tile.classList.add("level-bar");

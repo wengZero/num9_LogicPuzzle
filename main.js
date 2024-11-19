@@ -18,6 +18,7 @@ class Condition {
 class GameFrame {
   constructor(config) {
     this.level = 0;
+    this.levelMax = undefined;
     this.finish = 0;
     this.board = new Board(this);
     this.condition = new Condition(this);
