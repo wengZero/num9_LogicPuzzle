@@ -14,15 +14,14 @@ function tile_add_clickEvent(tile) {
 function gameMenu_init() {
   fetch('./game/level/config_0.json').then(res => res.json())
   .then(data => {
-    frame.levelMax = data['level']
+    frame.levelMax = data['level'];
+    for (let i=0; i<frame.levelMax; i++) {
+      let tile = document.createElement("div");
+      tile.id = (i+1).toString();
+      tile.classList.add("level-bar");
+      tile_add_clickEvent(tile);
+      tile.textContent = (i+1).toString();
+      document.getElementById("level-menu").appendChild(tile);
+    }
   });
-
-  for (let i=0; i<frame.levelMax; i++) {
-    let tile = document.createElement("div");
-    tile.id = (i+1).toString();
-    tile.classList.add("level-bar");
-    tile_add_clickEvent(tile);
-    tile.textContent = (i+1).toString();
-    document.getElementById("level-menu").appendChild(tile);
-  }
 }
