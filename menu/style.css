@@ -12,7 +12,7 @@
 #screen {
   position: relative;
   overflow-x: hidden;
-  min-width: 480px;
+  min-width: min(480px,100vw);
   height: 100%;
 }
 
