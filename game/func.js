@@ -70,11 +70,26 @@ function add_clickEvent_Init() {
   //reset: click -> clear all number in all cells (all)
   document.querySelector('button.oper#reset').addEventListener('click', () => {
     if (frame.finish) return;
-    frame.board.cells.forEach(element => {
-      element.innerHTML = "";
-    });
-    frame.board.active.removeAttribute('focus');
-    frame.board.active = null;
+    if (frame.board.active != null) {
+      frame.board.active.removeAttribute('focus');
+      frame.board.active = null;
+    }
+
+    for (let i=0; i<3; i++) {
+      setTimeout(()=> {
+        frame.board.cells[3*i+0].classList.add('flip');
+        frame.board.cells[3*i+1].classList.add('flip');
+        frame.board.cells[3*i+2].classList.add('flip');
+        frame.board.cells[3*i+0].innerHTML="";
+        frame.board.cells[3*i+1].innerHTML="";
+        frame.board.cells[3*i+2].innerHTML="";
+      }, 250*(i+1));
+    }
+    setTimeout(()=> {
+      frame.board.cells.forEach(element => {
+        element.classList.remove('flip');
+      });
+    }, 1000);
   });
 
   //clear: click -> clear all number in 'focus' cell (only one)

@@ -62,10 +62,13 @@
     button.index.success {
       background-color: var(--green); 
       border-color: var(--green);
-      animation: filp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: flip 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       span {
         color: var(--fill-text);
       }
+    }
+    button.index.flip {
+      animation: flip 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     button.index>span:only-child {
       font-size: var(--font-size);
@@ -99,7 +102,6 @@
     ul#condition {
       overflow: hidden;
       width: 95%;
-      /* display:flex; */
       position: relative;
 
       li.cond {
@@ -219,7 +221,7 @@
   }
 }
 
-@keyframes filp {
+@keyframes flip {
   0% {
     transform: rotateY(0);
   }
