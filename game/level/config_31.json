@@ -1,0 +1,58 @@
+
+{
+  "1": {
+    "text":"9",
+    "board":[ 0,0,0,
+              0,0,0,
+              1,0,0]
+  },
+  "2": {
+    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=6",
+    "board":[ 0,0,0,
+              1,1,0,
+              0,0,0]
+  },
+  "3": {
+    "text":"4",
+    "board":[ 3,3,3,
+              2,0,0,
+              3,3,3]
+  },
+  "4": {
+    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=7",
+    "board":[ 0,0,1,
+              0,1,0,
+              0,0,0]
+  },
+  "5": {
+    "text":"1",
+    "board":[ 0,0,0,
+              1,0,0,
+              0,0,0]
+  },
+  "6": {
+    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=8",
+    "board":[ 0,0,0,
+              0,1,0,
+              0,1,0]
+  },
+  "7": {
+    "text":"8",
+    "board":[ 3,3,3,
+              2,0,2,
+              3,3,3]
+  },
+  "8": {
+    "text":"7",
+    "board":[ 0,0,0,
+              0,0,0,
+              0,0,1]
+  },
+  "9": {
+    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=7",
+    "board":[ 1,0,0,
+              1,0,0,
+              0,0,0]
+  },
+  "A": ""
+}
