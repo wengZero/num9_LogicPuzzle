@@ -17,7 +17,7 @@ function add_clickEvent_Init() {
   });
 
   //home: click -> goBack to Mune
-  document.querySelector('#game-container i.bxs-home').addEventListener('click', () => {
+  document.querySelector('#game-container i.fa-house').addEventListener('click', () => {
     frame.game.removeAttribute('active');
     frame.menu.setAttribute('active', "");
     if (frame.board.active != null) {
@@ -48,7 +48,7 @@ function add_clickEvent_Init() {
   });
 
   //help: click -> jump out the game rule
-  document.querySelector('#game-container i.bxs-help-circle').addEventListener('click', () => {
+  document.querySelector('#game-container i.fa-circle-info').addEventListener('click', () => {
     console.log(frame);
   });
 
@@ -183,10 +183,10 @@ function conditionCard_generator() {
         
         switch (data[i].board[j-1]) {
           case 1:
-            span.innerHTML = "<i class='bx bxs-star'></i>";
+            span.innerHTML = "<i class='fa-solid fa-star'></i>";
             break;
           case 2:
-            span.innerHTML = "<i class='bx bx-x'></i>";
+            span.innerHTML = "<i class='fa-solid fa-xmark'></i>";
             break;
           default:
             break;

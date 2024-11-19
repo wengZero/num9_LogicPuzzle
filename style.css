@@ -2,7 +2,7 @@
   --bg-main:#f0f2f5;
   --bg-color:#fff;
   --txt-color: #282848;
-  --fill-color: #000;
+  --fill-color: #fff;
   --fill-bg: #caf0f0;
   --shadow: rgba(0, 0, 0, 0.2);
 
@@ -22,7 +22,6 @@
   --bg-main: #2a2a38;
   --bg-color: #1a1a2e;
   --txt-color: #6a6a6a;
-  --fill-color: #fff;
   --fill-bg: #000;
   --shadow: rgba(255, 255, 255, 0.1);
 }
@@ -70,14 +69,14 @@ nav {
     color: var(--blue);
     cursor: pointer;
     
-    .bx {font-size: var(--font-size-l);}
+    .fa-solid {font-size: var(--font-size-l);}
     span[light] {  
-      .bxs-sun  {display: none;}
-      .bxs-moon {display: inline-block;}
+      .fa-sun  {display: none;}
+      .fa-moon {display: inline-block;}
     }
     span[dark] {
-      .bxs-sun {display: inline-block;}
-      .bxs-moon {display: none;}
+      .fa-sun {display: inline-block;}
+      .fa-moon {display: none;}
     }
   }
 }
