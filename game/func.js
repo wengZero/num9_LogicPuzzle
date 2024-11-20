@@ -9,44 +9,49 @@ function ans_wrong_effect() {
   }, 500);
 }
 function ans_success_effect() {
+  /*
+  (Animation: Flip from left-top to right button with 200ms delay)
+  1 2 3
+  2 3 4
+  3 4 5
+  */
   frame.finish = 1;
-  setTimeout(()=> {
-    frame.board.cells[0].classList.add('success');
-  }, 200);
-  setTimeout(()=> {
-    frame.board.cells[1].classList.add('success');
-    frame.board.cells[3].classList.add('success');
-  }, 400);
-  setTimeout(()=> {
-    frame.board.cells[2].classList.add('success');
-    frame.board.cells[4].classList.add('success');
-    frame.board.cells[6].classList.add('success');
-  }, 600);
-  setTimeout(()=> {
-    frame.board.cells[5].classList.add('success');
-    frame.board.cells[7].classList.add('success');
-  }, 800);
-  setTimeout(()=> {
-    frame.board.cells[8].classList.add('success');
-  }, 1000);
+  for (let i=0; i<3; i++) {
+    for(let j=0; j<3; j++) {
+      setTimeout(()=> {
+        frame.board.cells[3*i+j].classList.add('success');
+      }, 200*(i+j));
+    }
+  }
+  frame.tile[frame.level-1].setAttribute('pass', "");
+  
 }
-
+function gameboard_Reset() {
+  if (frame.board.active != null) {
+    frame.board.active.removeAttribute('focus');
+  }
+  frame.board.active = null;
+  frame.board.cells.forEach(element => {
+    element.classList.remove('success');
+    element.innerHTML = "";
+  });
+}
 
 
 
 function add_clickEvent_Init() {
   
-  //gameBoard: click -> [ focus <> release]
+  //gameBoard: click -> [ focus <> release ]
   frame.board.cells.forEach(element => {
     element.addEventListener('click', () => {
       if (frame.finish) return;
       if (frame.board.active != null) {
         frame.board.active.removeAttribute('focus');
       }
-      if (frame.board.active === element) {
+      if (frame.board.active === element) { //click with same cell
         frame.board.active = null;
       }
-      else {
+      else { //click with other cell
         frame.board.active = element;
         element.setAttribute('focus', "");
       }
@@ -57,14 +62,8 @@ function add_clickEvent_Init() {
   document.querySelector('#game-container i.fa-house').addEventListener('click', () => {
     frame.game.removeAttribute('active');
     frame.menu.setAttribute('active', "");
-    if (frame.board.active != null) {
-      frame.board.active.removeAttribute('focus');
-      frame.board.active = null;
-    }
-    frame.board.cells.forEach(element => {
-      element.classList.remove('success');
-      element.innerHTML = "";
-    });
+
+    gameboard_Reset();
   });
 
   //reset: click -> clear all number in all cells (all)
@@ -122,6 +121,7 @@ function add_clickEvent_Init() {
       ans_success_effect();
     }
     else {
+      // ans_success_effect();
       ans_wrong_effect();
     }
   });
@@ -171,30 +171,29 @@ function add_clickEvent_Init() {
         keep[i] = temp_num[i].id;
       }
       
+      
+      frame.board.active.innerHTML = "";
+      if (keep.length == 0) {
+        let tile = document.createElement("span");
+        tile.id = element.id.toString();
+        tile.textContent = element.id.toString();
+        frame.board.active.appendChild(tile);
+        return;
+      }
 
-      if (keep.indexOf(element.id) > -1) {
+      if (keep.indexOf(element.id) > -1 && keep.length > 1) {
         keep = keep.filter(index => index != element.id.toString());
       }
       else {
         keep.push(element.id);
       }
-      
-      frame.board.active.innerHTML = "";
-      if (keep.length == 1) {
+      for (let i=1; i<=9; i++) {
         let tile = document.createElement("span");
-        tile.id = keep[0].toString();
-        tile.textContent = keep[0].toString();
-        frame.board.active.appendChild(tile);
-      }
-      else {
-        for (let i=1; i<=9; i++) {
-          let tile = document.createElement("span");
-          if (keep.includes(i.toString())) {
-            tile.id = i.toString();
-            tile.textContent = i.toString();
-          }
-          frame.board.active.appendChild(tile);
+        if (keep.includes(i.toString())) {
+          tile.id = i.toString();
+          tile.textContent = i.toString();
         }
+        frame.board.active.appendChild(tile);
       }
     });
   });
@@ -209,13 +208,16 @@ function gameBoard_init() {
 
 
 function conditionCard_generator() {
-  frame.cond.innerHTML = 
-      "<li class='cond' keep><div id='cond-text'>Keep</div><div id='cond-board'>\
-      <span id='1' none></span><span id='2' none></span><span id='3' none></span><span id='4' none></span><span id='5' none>\
-      </span><span id='8' none></span><span id='9' none></span></div></li>";
+  frame.cond[0].innerHTML = 
+  "<li class='cond' keep><div id='cond-text'>Keep</div><div id='cond-board'>\
+  <span id='1' none></span><span id='2' none></span><span id='3' none></span><span id='4' none></span><span id='5' none>\
+  </span><span id='8' none></span><span id='9' none></span></div></li>";
+  frame.cond[1].innerHTML = ""
+
   fetch('./game/level/config_'+(frame.level)+'.json').then(res => res.json())
   .then(data => {
     frame.ans = data["A"];
+    document.getElementById("ans").innerHTML = data["A"];
     
     frame.condition.last = 1;
     frame.condition.now = 2;
@@ -244,7 +246,8 @@ function conditionCard_generator() {
       li.appendChild(div_1);
       li.appendChild(div_2);
 
-      frame.cond.appendChild(li);
+      frame.cond[0].appendChild(li);
+      frame.cond[1].insertBefore(li.cloneNode(true), frame.cond[1].childNodes[i-2]);
     }
   })
   .catch(err => alert('關卡尚未完成'));

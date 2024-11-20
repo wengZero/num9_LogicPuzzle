@@ -23,5 +23,6 @@ function gameMenu_init() {
       tile.textContent = (i+1).toString();
       document.getElementById("level-menu").appendChild(tile);
     }
+    frame.tile = document.querySelector('#level-menu').childNodes;
   });
 }

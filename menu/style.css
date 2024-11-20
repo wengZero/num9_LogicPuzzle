@@ -69,6 +69,8 @@
       color: var(--txt-color);
     }
     div:hover {border-color: var(--blue);}
+    div[pass] {background-color: var(--green); color: var(--fill-text);}
+    div[pass]:hover {border-color: var(--fill-text);}
   }
 }
 #screen #main-menu[active] {transform: translate(0);}

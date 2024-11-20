@@ -24,9 +24,10 @@ class GameFrame {
     this.condition = new Condition(this);
     
     this.menu = document.querySelector('#main-menu');
+    this.tile = undefined;
     this.game = document.querySelector('#game-container');
-    this.cond = document.querySelector('#condition');
-    this.ans = undefined;
+    this.cond = document.querySelectorAll('#condition');
+    this.ans = null;
   }
 }
 
