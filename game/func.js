@@ -250,7 +250,7 @@ function conditionCard_generator() {
   .catch(err => alert('關卡尚未完成'));
 }
 
-const map = {"star":1, "x-mark":2, "none": 3};
+const map = {"star":1, "x-mark":2, "none":3, "triangle":4};
 function boardIndex(span, code) {
   if (code == map["star"]) {
     span.innerHTML = "<i class='fa-solid fa-star'></i>";
@@ -259,6 +259,11 @@ function boardIndex(span, code) {
 
   if (code == map["x-mark"]) {
     span.innerHTML = "<i class='fa-solid fa-xmark'></i>";
+    return;
+  }
+
+  if (code == map["triangle"]) {
+    span.innerHTML = "<i class='fa-solid fa-triangle'></i>";
     return;
   }
 
