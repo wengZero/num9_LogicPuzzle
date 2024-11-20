@@ -1,15 +1,15 @@
 
 {
   "1": {
-    "text":"9",
-    "board":[ 0,0,0,
-              0,0,0,
-              1,0,0]
+    "text":"<i class='fa-solid fa-triangle'></i>+<i class='fa-solid fa-triangle'></i>=7",
+    "board":[ 4,0,0,
+              4,0,0,
+              0,0,0]
   },
   "2": {
-    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=6",
+    "text":"<i class='fa-solid fa-triangle'></i>+<i class='fa-solid fa-triangle'></i>=6",
     "board":[ 0,0,0,
-              1,1,0,
+              4,4,0,
               0,0,0]
   },
   "3": {
@@ -19,9 +19,9 @@
               3,3,3]
   },
   "4": {
-    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=7",
-    "board":[ 0,0,1,
-              0,1,0,
+    "text":"<i class='fa-solid fa-triangle'></i>+<i class='fa-solid fa-triangle'></i>=7",
+    "board":[ 0,0,4,
+              0,4,0,
               0,0,0]
   },
   "5": {
@@ -31,10 +31,10 @@
               0,0,0]
   },
   "6": {
-    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=8",
+    "text":"<i class='fa-solid fa-triangle'></i>+<i class='fa-solid fa-triangle'></i>=8",
     "board":[ 0,0,0,
-              0,1,0,
-              0,1,0]
+              0,4,0,
+              0,4,0]
   },
   "7": {
     "text":"8",
@@ -48,11 +48,5 @@
               0,0,0,
               0,0,1]
   },
-  "9": {
-    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=7",
-    "board":[ 1,0,0,
-              1,0,0,
-              0,0,0]
-  },
-  "A": ""
+  "A": "682154937"
 }
