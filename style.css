@@ -1,30 +1,37 @@
 :root {
-  --bg-main:#f0f2f5;
-  --bg-color:#fff;
+  --bg-main:#f6f4fd;
+  --bg-color:#ffffff;
   --txt-color: #282848;
   --fill-text: #000;
-  --fill-bg: #caf0f0;
   --shadow: rgba(0, 0, 0, 0.2);
 
   --white: #fff;
   --blue: #00aeef;
   --red: #e91e63;
   --black: #000;
-  --green: #36d43b;
+  --green: #6eff73;
 
+  --font-size-xs: 0.8rem;
   --font-size-s: 1rem;
   --font-size: 1.5rem;
   --font-size-l: 2rem;
   --font-size-xl: 3rem;
 
   --topNav-size: 40px;
+  --min-width: 300px;
 }
 .dark {
   --bg-main: #2a2a38;
   --bg-color: #1a1a2e;
-  --txt-color: #6a6a6a;
+  --txt-color: #8a8a8a;
   --fill-text: #fff;
   --shadow: rgba(255, 255, 255, 0.1);
+  --green: #46ba4a;
+}
+@media only screen and (max-width: 450px) {
+  :root {
+    --font-size-xs: 0.6rem;
+  }
 }
 
 
@@ -47,6 +54,7 @@ nav {
   
   top: 0;
   width: 100%;
+  min-width: var(--min-width);
   box-sizing: 5px 2px var(--bg-main);
   z-index: 99;
 }
@@ -69,7 +77,8 @@ nav {
   #theme-toggle {
     color: var(--blue);
     cursor: pointer;
-    
+    padding: 0 10px;
+
     .fa-solid {font-size: var(--font-size-l);}
     span[light] {  
       .fa-sun  {display: none;}

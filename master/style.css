@@ -1,6 +1,5 @@
 #master {
   display: none;
-  padding: var(--topNav-size) 10px 5px 10px;
 
   #rule {
     place-items: center;
@@ -14,7 +13,7 @@
       place-items: center;
       grid-row-gap: 5px;
       grid-column-gap: 5px;
-      height: 90vh;
+      padding-bottom: 20px;
   
       li.cond {
         width: max-content;
@@ -35,19 +34,24 @@
   
         #cond-board {
           display: grid;
-          grid-template-columns: repeat(3, var(--cond-grid-size));
-          grid-column-gap: var(--cond-grid-gap);
-          grid-row-gap: var(--cond-grid-gap);
-  
+          grid-template-columns: repeat(3, 1fr);
+          grid-column-gap: 2px;
+          grid-row-gap: 2px;
+
           span {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: var(--cond-grid-size);
-            height: var(--cond-grid-size);
+            width: var(--size);
+            min-width: var(--min-size);
+            max-width: var(--max-size);
+            min-height: var(--min-size);
+            max-height: var(--max-size);
+            aspect-ratio: 1/1;
             border: 0px;
             background-color: var(--bg-main);
             border-radius: 10px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: var(--txt-color);
             font-size: var(--font-size);
           }
