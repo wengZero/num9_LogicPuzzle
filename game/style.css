@@ -1,5 +1,5 @@
 :root {
-  --size: min(8vh, 8vw);
+  --size: min(8vh, 9vw);
   --min-size: 30px;
   --max-size: 65px;
 }
