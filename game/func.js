@@ -28,6 +28,10 @@ function homeIcon_add_clickEvent() {
       element.removeAttribute('success');
       element.innerHTML = "";
     });
+
+    setTimeout(()=> {
+      document.getElementById("screen").scrollTop = frame.menuPos;
+    }, 50);
   });
 }
 
@@ -240,6 +244,7 @@ async function conditionCard_generator() {
     const data = await res.json();  
 
     frame.ans = data["A"];
+    frame.diff = data["diff"];
     frame.condition.last = 1;
     frame.condition.now = 2;
     frame.condition.next = 3;

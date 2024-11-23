@@ -8,7 +8,9 @@ function tile_add_clickEvent(tile) {
     frame.menu.removeAttribute('active');
     frame.game.setAttribute('active', "");
     
-    frame.time = new Date();    
+    frame.time = new Date();
+    frame.menuPos = document.getElementById("screen").scrollTop;
+    document.getElementById("screen").scrollTop = 0;
   });
 }
 

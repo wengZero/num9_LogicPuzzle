@@ -39,10 +39,11 @@ class Condition {
 //         ans [String]    : 
 class GameFrame {
   constructor(config) {
+    this.finish = 0;
     this.level = 0;
     this.levelMax = undefined;
-    this.finish = 0;
     this.time = undefined;
+    this.menuPos = 0;
     this.board = new Board(this);
     this.condition = new Condition(this);
     
@@ -51,6 +52,7 @@ class GameFrame {
     this.tile = undefined;
     this.cond = document.querySelectorAll('#condition');
     this.ans = null;
+    this.diff = 0;
   }
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
