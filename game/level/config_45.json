@@ -1,0 +1,35 @@
+{
+  "1": {
+    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=13",
+    "board":[ 0,0,1,
+              0,0,1,
+              0,0,1]
+  },
+  "2": {
+    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=3",
+    "board":[ 0,0,1,
+              1,0,0,
+              0,0,0]
+  },
+  "3": {
+    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=17",
+    "board":[ 1,1,0,
+              0,0,0,
+              0,0,0]
+  },
+  "4": {
+    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=12",
+    "board":[ 1,0,0,
+              1,0,0,
+              1,0,0]
+  },
+  "5": {
+    "text":"<i class='fa-solid fa-star'></i>+<i class='fa-solid fa-star'></i>=10",
+    "board":[ 0,0,0,
+              0,1,0,
+              0,0,1]
+  },
+  "A": "892167354",
+  "diff":86,
+  "info": ""
+}
