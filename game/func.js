@@ -225,6 +225,7 @@ function boardIndex(span, code) {
 }
 
 function diffcultIcon_generator() {
+  const maxPersent = 50;
   let diff = document.querySelector('div#diff');
 
   diff.innerHTML = "<span id='val'>"+frame.diff+"</span>";
@@ -238,9 +239,9 @@ function diffcultIcon_generator() {
     diff.appendChild(icon);
     return;
   }
-  for (let v=0; v<frame.diff; v+=40) {
+  for (let v=0; v<frame.diff; v+=maxPersent) {
     let icon = document.createElement("i");
-    let persent = (frame.diff-v)/40*100;
+    let persent = (frame.diff-v)/maxPersent*100;
     icon.classList.add("fa-sharp", "fa-solid", "fa-brain");
 
     icon.style.background = "linear-gradient(to right, var(--blue) "+ persent + "% , var(--fill-text)" + persent + "%)";
