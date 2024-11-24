@@ -22,10 +22,37 @@
     grid-row-gap: 20px;
     place-items: center;
 
-    i {cursor: pointer;}
+    .fa-house {cursor: pointer;}
     color: var(--blue);
     font-size: var(--font-size);
+
+    #diff {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      #val {
+        position: absolute;
+        left: 100%;
+        bottom: -50%;
+        padding: 0 5px;
+        color: var(--red);
+        font-size: var(--font-size-s);
+        opacity: 0;
+      }
+      i {
+        font-size: var(--font-size-s);
+        color: var(--bg-main);
+        -webkit-text-fill-color: transparent;
+      }
+    }
+    #diff:hover #val {
+      opacity: 1;
+    }
   }
+
   #board { /* R1C2 */
     /* width: 100%; */
     justify-items: center;

@@ -35,13 +35,6 @@ function homeIcon_add_clickEvent() {
   });
 }
 
-function infoIcon_add_clickEvent() {
-  document.querySelector('#game-container i.fa-circle-info')
-  .addEventListener('click', () => {
-    console.log(frame);
-  });
-}
-
 function resetBtn_add_clickEvent() {
   document.querySelector('button.oper#reset')
   .addEventListener('click', () => {
@@ -231,6 +224,32 @@ function boardIndex(span, code) {
   }
 }
 
+function diffcultIcon_generator() {
+  let diff = document.querySelector('div#diff');
+
+  diff.innerHTML = "<span id='val'>"+frame.diff+"</span>";
+  if (frame.diff == 0) {
+    let icon = document.createElement("i");
+    let persent = 0;
+    icon.classList.add("fa-sharp", "fa-solid", "fa-brain");
+
+    icon.style.background = "linear-gradient(to right, var(--blue) "+ persent + "% , var(--fill-text)" + persent + "%)";
+    icon.style.backgroundClip = "text"
+    diff.appendChild(icon);
+    return;
+  }
+  for (let v=0; v<frame.diff; v+=40) {
+    let icon = document.createElement("i");
+    let persent = (frame.diff-v)/40*100;
+    icon.classList.add("fa-sharp", "fa-solid", "fa-brain");
+
+    icon.style.background = "linear-gradient(to right, var(--blue) "+ persent + "% , var(--fill-text)" + persent + "%)";
+    icon.style.backgroundClip = "text"
+    diff.appendChild(icon);
+  }
+}
+
+
 async function conditionCard_generator() {
   frame.condition.cond = undefined;
   frame.cond[0].innerHTML = 
@@ -275,6 +294,7 @@ async function conditionCard_generator() {
     }
     
     document.getElementById("ans").innerHTML = frame.ans;
+    diffcultIcon_generator();
   }
   catch {
     alert('本關卡尚未完成，請回主選單');
@@ -286,7 +306,6 @@ async function conditionCard_generator() {
 function gameBoard_init() {
   board_add_clickEvent();
   homeIcon_add_clickEvent();
-  infoIcon_add_clickEvent();
   resetBtn_add_clickEvent();
   clearBtn_add_clickEvent();
   finishBtn_add_clickEvent();
