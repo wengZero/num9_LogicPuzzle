@@ -30,6 +30,11 @@
   transition: transform 0.3s ease-in-out;
 
   #logIn {
+    i {
+      color: var(--blue);
+      font-size: var(--font-size);
+      cursor: pointer;
+    }
     input {
       font-family: "LXGW WenKai TC", cursive;
       border: 2px solid var(--bg-main);

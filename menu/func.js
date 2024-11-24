@@ -14,6 +14,13 @@ function tile_add_clickEvent(tile) {
   });
 }
 
+function infoIcon_add_clickEvent() {
+  document.querySelector('#main-menu i.fa-circle-info')
+  .addEventListener('click', () => {
+    console.log(frame);
+  });
+}
+
 
 async function gameMenu_init() {
   const res = await fetch('./game/level/config_0.json');
@@ -29,4 +36,6 @@ async function gameMenu_init() {
     document.getElementById("level-menu").appendChild(tile);
   }
   frame.tile = document.querySelector('#level-menu').childNodes;
+
+  infoIcon_add_clickEvent();
 }
