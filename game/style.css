@@ -6,7 +6,7 @@
 
 #screen #game-container {
   position: absolute;
-  top: 0;
+  top: var(--topNav-size);
   left: 0;
   width: 100%;
   height: max-content;
