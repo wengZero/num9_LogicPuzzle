@@ -21,6 +21,27 @@ function infoIcon_add_clickEvent() {
   });
 }
 
+function logIn_add_changeEvent() {
+  document.querySelector('input#custom-name')
+  .addEventListener('change', async (self) => {
+    const res = await fetch(
+      dbURL+'?playerName='+self.target.value+'&maxLevel='+frame.levelMax
+    );
+    const data = await res.json();
+
+    if (data['result'] == "fail") return;
+    if (data['result'] == "error") return;
+    for (let i=0,j=0; i<data['pass'].length; i++) {
+      if (data['pass'][i]=="") continue;
+      setTimeout(()=> {
+        frame.tile[i].setAttribute('pass', "");
+      }, 100*j);
+      j++;
+    }
+  })
+}
+
+
 
 async function gameMenu_init() {
   const res = await fetch('./game/level/config_0.json');
@@ -38,4 +59,5 @@ async function gameMenu_init() {
   frame.tile = document.querySelector('#level-menu').childNodes;
 
   infoIcon_add_clickEvent();
+  logIn_add_changeEvent();
 }
