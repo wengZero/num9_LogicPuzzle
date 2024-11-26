@@ -1,0 +1,59 @@
+{
+  "1": {
+    "text":"<i class='fa-solid fa-star'></i>-<i class='fa-solid fa-star'></i>=4",
+    "board":[ 0,0,1,
+              0,1,0,
+              0,0,0]
+  },
+  "2": {
+    "text":"1、2、3、4、5",
+    "board":[ 0,2,0,
+              2,0,2,
+              0,2,0]
+  },
+  "3": {
+    "text":"<i class='fa-solid fa-star'></i>-<i class='fa-solid fa-star'></i>=1",
+    "board":[ 0,1,0,
+              0,1,0,
+              0,0,0]
+  },
+  "4": {
+    "text":"<i class='fa-solid fa-star'></i>-<i class='fa-solid fa-star'></i>=1",
+    "board":[ 0,0,0,
+              0,0,1,
+              0,1,0]
+  },
+  "5": {
+    "text":"<i class='fa-solid fa-star'></i>-<i class='fa-solid fa-star'></i>=3",
+    "board":[ 0,0,0,
+              0,1,0,
+              1,0,0]
+  },
+  "6": {
+    "text":"<i class='fa-solid fa-star'></i>-<i class='fa-solid fa-star'></i>=1",
+    "board":[ 0,1,0,
+              1,0,0,
+              0,0,0]
+  },
+  "7": {
+    "text":"4",
+    "board":[ 2,0,0,
+              2,0,0,
+              2,0,0]
+  },
+  "8": {
+    "text":"<i class='fa-solid fa-star'></i>-<i class='fa-solid fa-star'></i>=1",
+    "board":[ 0,0,0,
+              1,0,0,
+              0,1,0]
+  },
+  "9": {
+    "text":"9",
+    "board":[ 3,3,3,
+              2,0,0,
+              3,3,3]
+  },
+  "A": "361759284",
+  "diff":106,
+  "info": ""
+}
