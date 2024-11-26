@@ -29,9 +29,30 @@ function homeIcon_add_clickEvent() {
       element.innerHTML = "";
     });
 
+    
     setTimeout(()=> {
       document.getElementById("screen").scrollTop = frame.menuPos;
     }, 50);
+
+    const name = document.querySelector('input#custom-name').value;
+    if (name == "") return;
+    if (frame.finish) {
+      setTimeout(()=> {
+        frame.tile[frame.level-1].setAttribute('pass', "");
+      }, 500);
+      
+      fetch(
+        dbURL+'?playerName='+name+'&level='+frame.level+'&time='+frame.time+'&finish=1'
+        , {method: "POST"}
+      )
+    }
+    else {
+      frame.time = new Date()-frame.time;
+      fetch(
+        dbURL+'?playerName='+name+'&level='+frame.level+'&time='+frame.time+'&finish=0'
+        , {method: "POST"}
+      )
+    }
   });
 }
 
@@ -156,8 +177,6 @@ function ans_success_effect() {
       }, 200*(i+j));
     }
   }
-  frame.tile[frame.level-1].setAttribute('pass', "");
-  console.log(frame.time);
 }
 
 
