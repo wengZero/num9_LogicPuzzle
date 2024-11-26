@@ -64,9 +64,10 @@ document.querySelector('#theme-toggle').addEventListener('click', ()=> {
   document.querySelector('body').classList.toggle('dark');
 })
 
+
+const dbURL = "https://script.google.com/macros/s/AKfycbzLxMXNMIRcmMb8rOXux_YZSI7AtIwcLmle5vvGXSTzFiJUTYLRtwGwRjmnCFs06UiOEg/exec";
 const frame = new GameFrame({})
 window.onload = function() {
-  // save();
   gameMenu_init();
   gameBoard_init();
 }
