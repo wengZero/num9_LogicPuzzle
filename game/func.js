@@ -34,25 +34,23 @@ function homeIcon_add_clickEvent() {
       document.getElementById("screen").scrollTop = frame.menuPos;
     }, 50);
 
-    const name = document.querySelector('input#custom-name').value;
-    if (name == "") return;
-    if (frame.finish) {
-      setTimeout(()=> {
-        frame.tile[frame.level-1].setAttribute('pass', "");
-      }, 500);
-      
-      fetch(
-        dbURL+'?playerName='+name+'&level='+frame.level+'&time='+frame.time+'&finish=1'
-        , {method: "POST"}
-      )
+
+    
+    if (!frame.finish) {
+      if (frame.name != "") {
+        frame.time = new Date()-frame.time;
+        if (frame.time < 15*1000) return;
+        fetch(
+          dbURL+'?playerName='+frame.name+'&level='+frame.level+'&time='+frame.time+'&finish=0'
+          , {method: "POST"}
+        )
+      }
+      return;
     }
-    else {
-      frame.time = new Date()-frame.time;
-      fetch(
-        dbURL+'?playerName='+name+'&level='+frame.level+'&time='+frame.time+'&finish=0'
-        , {method: "POST"}
-      )
-    }
+
+    setTimeout(()=> {
+      frame.tile[frame.level-1].setAttribute('pass', "");
+    }, 800);
   });
 }
 
@@ -168,6 +166,10 @@ function ans_success_effect() {
   2 3 4
   3 4 5
   */
+  fetch(
+    dbURL+'?playerName='+frame.name+'&level='+frame.level+'&time='+frame.time+'&finish=1'
+    , {method: "POST"}
+  )
   frame.finish = 1;
   
   for (let i=0; i<3; i++) {
