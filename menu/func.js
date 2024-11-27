@@ -24,15 +24,19 @@ function infoIcon_add_clickEvent() {
 function logIn_add_changeEvent() {
   document.querySelector('input#custom-name')
   .addEventListener('change', async (self) => {
+    frame.name = self.target.value;
     const res = await fetch(
-      dbURL+'?playerName='+self.target.value+'&maxLevel='+frame.levelMax
+      dbURL+'?playerName='+frame.name+'&maxLevel='+frame.levelMax
     );
     const data = await res.json();
 
     if (data['result'] == "fail") return;
     if (data['result'] == "error") return;
     for (let i=0,j=0; i<data['pass'].length; i++) {
-      if (data['pass'][i]=="") continue;
+      if (data['pass'][i]=="") {
+        frame.tile[i].removeAttribute('pass');
+        continue;
+      }
       setTimeout(()=> {
         frame.tile[i].setAttribute('pass', "");
       }, 100*j);
