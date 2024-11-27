@@ -51,6 +51,7 @@ class GameFrame {
     this.game = document.querySelector('#game-container');
     this.tile = undefined;
     this.cond = document.querySelectorAll('#condition');
+    this.name = ""
     this.ans = null;
     this.diff = 0;
   }
